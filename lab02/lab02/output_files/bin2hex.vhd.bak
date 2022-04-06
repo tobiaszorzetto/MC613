@@ -1,0 +1,25 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity bin2hex is 
+port ( 
+	bin: in std_logic_vector(3 downto 0); 
+	hex: out std_logic_vector(6 downto 0) 
+); 
+end bin2hex;
+
+architecture arc_bin2hex of bin2hex is
+begin
+	with bin select
+		hex <= "1111110" when "0000"
+		hex <= "0110000" when "0001"
+		hex <= "1101101" when "0010"
+		hex <= "1111001" when "0011"
+		hex <= "0110011" when "0100"
+		hex <= "1011011" when "0101"
+		hex <= "1011111" when "0110"
+		hex <= "1110000" when "0111"
+		hex <= "1111111" when "1000"
+		hex <= "1111011" when "1001"
+		hex <= "1001111" when others;
+end;
